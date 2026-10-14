@@ -1,5 +1,5 @@
 import { Illustration } from "@/components/illustrations/Illustration";
-import { IllustrationTile, tileTones } from "@/components/illustrations/IllustrationTile";
+import { boldTones, IllustrationTile, tileTones, type BoldTone } from "@/components/illustrations/IllustrationTile";
 import { SoonBadge } from "@/components/ui/SoonBadge";
 import type { Feature } from "@/content/site";
 import { cx } from "@/lib/cx";
@@ -28,14 +28,16 @@ type FeatureItemProps = {
   variant?: keyof typeof layouts;
   /** Set when the item sits on a dark ink band. */
   inverse?: boolean;
+  /** Card variant only: use a fully saturated colour (carousel slides) instead of the pastel tone. */
+  bold?: BoldTone;
 };
 
 /** One drawing + a title + a sentence. Used by the features grid, the steps and the creator perks. */
-export function FeatureItem({ item, variant = "card", inverse = false }: FeatureItemProps) {
+export function FeatureItem({ item, variant = "card", inverse = false, bold }: FeatureItemProps) {
   const layout = layouts[variant];
   const isCard = variant === "card";
   return (
-    <article className={cx(layout.wrap, isCard && tileTones[item.tone])}>
+    <article className={cx(layout.wrap, isCard && (bold ? cx(boldTones[bold], "shadow-pop") : tileTones[item.tone]))}>
       {isCard ? (
         <Illustration name={item.illustration} className="size-24 transition duration-300 group-hover:-rotate-3 group-hover:scale-105" />
       ) : (

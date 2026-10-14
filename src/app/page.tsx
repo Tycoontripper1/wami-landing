@@ -6,8 +6,8 @@ import { DownloadCta } from "@/components/sections/DownloadCta";
 import { Faq } from "@/components/sections/Faq";
 import { Features } from "@/components/sections/Features";
 import { Hero } from "@/components/sections/Hero";
-import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Moodboard } from "@/components/sections/Moodboard";
+import { PhoneStory } from "@/components/sections/PhoneStory";
 import { Ticker } from "@/components/sections/Ticker";
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
         <Ticker />
         <Moodboard />
         <Features />
-        <HowItWorks />
+        <PhoneStory />
         <Creatives />
         <Audiences />
         <Faq />

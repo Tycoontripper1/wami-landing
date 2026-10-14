@@ -1,5 +1,6 @@
 import { Illustration } from "@/components/illustrations/Illustration";
 import { tileTones, type TileTone } from "@/components/illustrations/IllustrationTile";
+import { VelocitySkew } from "@/components/ui/VelocitySkew";
 import { ticker } from "@/content/site";
 
 const tones: TileTone[] = ["a", "b", "c", "d", "e"];
@@ -21,18 +22,21 @@ function TickerItem({ item, index }: { item: (typeof ticker)[number]; index: num
 export function Ticker() {
   return (
     <section aria-label="What Wami does" className="overflow-hidden border-y-2 border-ink bg-ink py-6 text-on-ink">
-      <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
-        <ul className="flex">
-          {ticker.map((item, i) => (
-            <TickerItem key={item.text} item={item} index={i} />
-          ))}
-        </ul>
-        <ul className="flex" aria-hidden="true">
-          {ticker.map((item, i) => (
-            <TickerItem key={item.text} item={item} index={i} />
-          ))}
-        </ul>
-      </div>
+      {/* leans with scroll speed; the marquee slides inside it */}
+      <VelocitySkew>
+        <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+          <ul className="flex">
+            {ticker.map((item, i) => (
+              <TickerItem key={item.text} item={item} index={i} />
+            ))}
+          </ul>
+          <ul className="flex" aria-hidden="true">
+            {ticker.map((item, i) => (
+              <TickerItem key={item.text} item={item} index={i} />
+            ))}
+          </ul>
+        </div>
+      </VelocitySkew>
     </section>
   );
 }

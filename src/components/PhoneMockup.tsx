@@ -3,6 +3,8 @@ import { Pin } from "@/components/illustrations/decor";
 import { Illustration, type IllustrationName } from "@/components/illustrations/Illustration";
 import { tileTones, type TileTone } from "@/components/illustrations/IllustrationTile";
 import { C, P, R } from "@/components/illustrations/shapes";
+import { LikeButton } from "@/components/LikeButton";
+import { PhoneFrame } from "@/components/PhoneFrame";
 import { Drift } from "@/components/ui/Drift";
 import { cx } from "@/lib/cx";
 
@@ -65,50 +67,44 @@ export function PhoneMockup() {
       <Sticker name="book" tone="c" className="-left-16 bottom-24 rotate-3" delay="-4.1s" drift={60} />
       <Sticker name="shield" tone="a" className="-right-24 bottom-10 -rotate-3" delay="-5.6s" drift={110} />
 
-      <div className="rounded-[2.75rem] bg-ill-ink p-2.5 shadow-2xl ring-1 ring-line">
-        <div className="overflow-hidden rounded-[2.1rem] bg-canvas">
-          <div className="flex items-center gap-2 px-5 pt-5">
-            <LogoMark className="h-5" />
-            <span className="text-sm font-bold">Lagos, Nigeria</span>
-          </div>
+      <PhoneFrame>
+        <div className="flex items-center gap-2 px-5 pt-5">
+          <LogoMark className="h-5" />
+          <span className="text-sm font-bold">Lagos, Nigeria</span>
+        </div>
 
-          <div className="flex gap-1.5 px-4 pt-3">
-            {tabs.map((tab, index) => (
-              <span
-                key={tab}
-                className={cx(
-                  "rounded-full px-3 py-1.5 text-[11px] font-semibold",
-                  index === 0 ? "bg-primary text-on-primary" : "border border-line text-fg-muted",
-                )}
-              >
-                {tab}
-              </span>
-            ))}
-          </div>
-
-          {/* Mirrors the app: pass / like swipes the card off, the next settles in. */}
-          <div className="relative mx-4 mt-3 aspect-[6/7] animate-swipe overflow-hidden rounded-3xl border border-line">
-            <Scene />
-            <div className="absolute inset-x-0 bottom-0 bg-ill-ink/85 px-4 py-3 text-ill-paper">
-              <p className="font-display text-base font-bold leading-tight">Portrait sessions</p>
-              <p className="text-xs opacity-80">Photographer · Near you</p>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-center gap-6 py-4">
-            <span className="grid size-11 place-items-center rounded-full border border-line bg-surface">
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="size-5 stroke-fg" fill="none" strokeWidth={2.5} strokeLinecap="round">
-                <path d="M6 6l12 12M18 6L6 18" />
-              </svg>
+        <div className="flex gap-1.5 px-4 pt-3">
+          {tabs.map((tab, index) => (
+            <span
+              key={tab}
+              className={cx(
+                "rounded-full px-3 py-1.5 text-[11px] font-semibold",
+                index === 0 ? "bg-primary text-on-primary" : "border border-line text-fg-muted",
+              )}
+            >
+              {tab}
             </span>
-            <span className="grid size-12 animate-pop place-items-center rounded-full bg-accent">
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 stroke-on-accent" fill="none" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 20.500C4.500 15 3 10 6.500 7.500 9 5.800 12 7.200 12 9.800 12 7.200 15 5.800 17.500 7.500 21 10 19.500 15 12 20.500Z" />
-              </svg>
-            </span>
+          ))}
+        </div>
+
+        {/* Mirrors the app: pass / like swipes the card off, the next settles in. */}
+        <div className="relative mx-4 mt-3 aspect-[6/7] animate-swipe overflow-hidden rounded-3xl border border-line">
+          <Scene />
+          <div className="absolute inset-x-0 bottom-0 bg-ill-ink/85 px-4 py-3 text-ill-paper">
+            <p className="font-display text-base font-bold leading-tight">Portrait sessions</p>
+            <p className="text-xs opacity-80">Photographer · Near you</p>
           </div>
         </div>
-      </div>
+
+        <div className="flex items-center justify-center gap-6 py-4">
+          <span className="grid size-11 place-items-center rounded-full border border-line bg-surface">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="size-5 stroke-fg" fill="none" strokeWidth={2.5} strokeLinecap="round">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </span>
+          <LikeButton />
+        </div>
+      </PhoneFrame>
     </div>
   );
 }

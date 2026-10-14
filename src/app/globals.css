@@ -48,6 +48,15 @@
   --tile-d: #ffc9dc; /* rose */
   --tile-e: #ffd9bd; /* peach */
 
+  /* The bold set — fully saturated slide colours for the carousels. All
+     carry dark ink text at 7:1 or better. Cyan and amber are the brand; lime,
+     coral and lilac are what make the carousels feel like Wami's own. */
+  --bold-cyan: #00bcd4;
+  --bold-lime: #c8f044;
+  --bold-coral: #ff7a66;
+  --bold-amber: #ffa000;
+  --bold-lilac: #cbb6ff;
+
   /* Google Play mark — fixed third-party brand colours. */
   --play-blue: #4285f4;
   --play-green: #00ad4b;
@@ -86,6 +95,11 @@
   --color-tile-c: var(--tile-c);
   --color-tile-d: var(--tile-d);
   --color-tile-e: var(--tile-e);
+  --color-bold-cyan: var(--bold-cyan);
+  --color-bold-lime: var(--bold-lime);
+  --color-bold-coral: var(--bold-coral);
+  --color-bold-amber: var(--bold-amber);
+  --color-bold-lilac: var(--bold-lilac);
   --color-play-blue: var(--play-blue);
   --color-play-green: var(--play-green);
   --color-play-yellow: var(--play-yellow);
@@ -112,6 +126,27 @@
      settles in, and the like button pulses just before the swipe. */
   --animate-swipe: swipe 6s ease-in-out infinite;
   --animate-pop: pop 6s ease-in-out infinite;
+  --animate-swing: swing 3.6s ease-in-out infinite;
+  --animate-drop: drop 650ms cubic-bezier(0.3, 1.6, 0.5, 1) both;
+  --animate-nudge: nudge 1.6s ease-in-out infinite;
+  --animate-fill: fill linear both;
+
+  @keyframes swing {
+    0%, 100% { rotate: -5deg; }
+    50% { rotate: 5deg; }
+  }
+  @keyframes drop {
+    from { translate: 0 -34px; rotate: -24deg; scale: 1.4; opacity: 0; }
+    to { translate: 0 0; rotate: 0deg; scale: 1; opacity: 1; }
+  }
+  @keyframes nudge {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 8px 0; }
+  }
+  @keyframes fill {
+    from { scale: 0 1; }
+    to { scale: 1 1; }
+  }
 
   @keyframes rise {
     from { opacity: 0; translate: 0 22px; }

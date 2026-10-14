@@ -52,6 +52,8 @@ export const categories: Array<{
   title: string;
   body: string;
   tone: TileTone;
+  /** Bold slide colour used by the mobile carousel. */
+  bold: "cyan" | "lime" | "coral" | "amber" | "lilac";
   scene: SceneName;
 }> = [
   {
@@ -59,6 +61,7 @@ export const categories: Array<{
     title: "Photography",
     body: "Portraits, events and product shoots from photographers in your city.",
     tone: "a",
+    bold: "cyan",
     scene: "camera",
   },
   {
@@ -66,6 +69,7 @@ export const categories: Array<{
     title: "Hair & beauty",
     body: "Stylists, braiders and makeup artists you can book for a date and time.",
     tone: "d",
+    bold: "lime",
     scene: "beauty",
   },
   {
@@ -73,6 +77,7 @@ export const categories: Array<{
     title: "Fashion & accessories",
     body: "Clothes, bags and pieces made by the people who designed them.",
     tone: "b",
+    bold: "coral",
     scene: "fashion",
   },
   {
@@ -80,6 +85,7 @@ export const categories: Array<{
     title: "Art & design",
     body: "Original artwork, prints and custom commissions.",
     tone: "e",
+    bold: "amber",
     scene: "art",
   },
   {
@@ -87,6 +93,7 @@ export const categories: Array<{
     title: "Digital",
     body: "Designers and makers delivering work you can use straight away.",
     tone: "c",
+    bold: "lilac",
     scene: "digital",
   },
 ];

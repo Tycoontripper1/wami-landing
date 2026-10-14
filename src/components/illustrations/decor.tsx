@@ -51,11 +51,13 @@ export function Bunting({ className, count = 26 }: { className?: string; count?:
         const t = (x / width) * 2 - 1;
         const y = 10 + (1 - t * t) * 24;
         return (
+          // each flag hangs from the string and sways a little out of step with its neighbours
           <path
             key={i}
             d={`M${x - 24} ${y} L${x + 24} ${y} L${x} ${y + 46} Z`}
-            className={cx("stroke-ill-ink", flagTones[i % flagTones.length])}
+            className={cx("animate-swing stroke-ill-ink", flagTones[i % flagTones.length])}
             strokeWidth={2.5}
+            style={{ transformBox: "fill-box", transformOrigin: "center top", animationDelay: `${-(i % 9) * 0.4}s` }}
           />
         );
       })}

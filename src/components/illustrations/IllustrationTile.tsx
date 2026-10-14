@@ -11,6 +11,17 @@ export const tileTones = {
 
 export type TileTone = keyof typeof tileTones;
 
+/** Fully saturated colours for carousel slides — the page's loudest moments. */
+export const boldTones = {
+  cyan: "bg-bold-cyan",
+  lime: "bg-bold-lime",
+  coral: "bg-bold-coral",
+  amber: "bg-bold-amber",
+  lilac: "bg-bold-lilac",
+} as const;
+
+export type BoldTone = keyof typeof boldTones;
+
 const tileSizes = {
   md: "size-20 rounded-2xl p-2.5",
   lg: "size-28 rounded-3xl p-3",

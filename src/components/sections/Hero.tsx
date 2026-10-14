@@ -3,6 +3,7 @@ import { PhoneMockup } from "@/components/PhoneMockup";
 import { RollWords } from "@/components/RollWords";
 import { StoreButtons } from "@/components/StoreButtons";
 import { Container } from "@/components/ui/Container";
+import { ScrollTilt } from "@/components/ui/ScrollTilt";
 import { hero } from "@/content/site";
 
 /* A pinboard: warm paper with a dot grid, bunting strung across the top, and
@@ -32,7 +33,9 @@ export function Hero() {
           <StoreButtons className="mt-9 animate-rise [animation-delay:280ms]" />
         </div>
         <div className="animate-rise [animation-delay:200ms]">
-          <PhoneMockup />
+          <ScrollTilt>
+            <PhoneMockup />
+          </ScrollTilt>
         </div>
       </Container>
     </section>
