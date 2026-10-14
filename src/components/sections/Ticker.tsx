@@ -8,7 +8,7 @@ const tones: TileTone[] = ["a", "b", "c", "d", "e"];
 function TickerItem({ item, index }: { item: (typeof ticker)[number]; index: number }) {
   return (
     <li className="flex shrink-0 items-center gap-3 pr-10">
-      <span className={`grid size-11 place-items-center rounded-xl border-2 border-on-ink/30 p-1.5 ${tileTones[tones[index % tones.length]]}`}>
+      <span className={`grid size-11 place-items-center rounded-xl border-2 border-ink/30 p-1.5 ${tileTones[tones[index % tones.length]]}`}>
         <Illustration name={item.illustration} />
       </span>
       <span className="whitespace-nowrap font-display text-xl font-bold">{item.text}</span>
@@ -16,14 +16,14 @@ function TickerItem({ item, index }: { item: (typeof ticker)[number]; index: num
   );
 }
 
-/* A dark band that breaks up the white page. The list is rendered twice and
+/* A coloured band that breaks up the white page. The list is rendered twice and
    the track slides exactly half its width, so the loop never visibly resets.
    The second copy is hidden from assistive tech. */
 export function Ticker() {
   return (
     <section
       aria-label="What Wami does"
-      className="relative z-10 -my-1 -rotate-[1.2deg] scale-x-[1.04] overflow-hidden border-y-2 border-ink bg-dusk-blue py-6 text-on-ink"
+      className="relative z-10 -my-1 -rotate-[1.2deg] scale-x-[1.04] overflow-hidden border-y-2 border-ink bg-dusk-teal py-6 text-on-primary"
     >
       {/* leans with scroll speed; the marquee slides inside it */}
       <VelocitySkew>

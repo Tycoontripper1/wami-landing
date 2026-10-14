@@ -57,18 +57,18 @@
   --bold-amber: #ffa000;
   --bold-lilac: #cbb6ff;
 
-  /* "Dusk" — cobalt against sky-orange, complementary colours, used for the
+  /* "Dusk" — brand teal against brand amber, complementary colours, used for the
      flat-shaded scenes (every form has a lit face and a shaded face) and the
      big colour moments: the footer, the closing card, the dark bands. */
-  --dusk-sky: #ff8f1f;
-  --dusk-ember: #ff6a1a;
-  --dusk-cloud: #ffb04d;
-  --dusk-cloud-soft: #ffc67f;
-  --dusk-blue: #2b63b8;
-  --dusk-blue-deep: #17407f;
-  --dusk-blue-night: #0c2652;
-  --dusk-blue-light: #5b9be6;
-  --dusk-glass: #bfe4ff;
+  --dusk-sky: #ffa000; /* brand amber */
+  --dusk-ember: #f57c00;
+  --dusk-cloud: #ffb938;
+  --dusk-cloud-soft: #ffd27a;
+  --dusk-teal: #00bcd4; /* brand cyan */
+  --dusk-teal-deep: #00838f; /* brand primary-deep */
+  --dusk-teal-night: #0a3a44;
+  --dusk-teal-light: #6fdcec;
+  --dusk-glass: #d9f7fb;
   --dusk-brown: #7a3f1d;
   --dusk-leaf: #1d5c45;
   --dusk-leaf-light: #3b8f64;
@@ -120,10 +120,10 @@
   --color-dusk-ember: var(--dusk-ember);
   --color-dusk-cloud: var(--dusk-cloud);
   --color-dusk-cloud-soft: var(--dusk-cloud-soft);
-  --color-dusk-blue: var(--dusk-blue);
-  --color-dusk-blue-deep: var(--dusk-blue-deep);
-  --color-dusk-blue-night: var(--dusk-blue-night);
-  --color-dusk-blue-light: var(--dusk-blue-light);
+  --color-dusk-teal: var(--dusk-teal);
+  --color-dusk-teal-deep: var(--dusk-teal-deep);
+  --color-dusk-teal-night: var(--dusk-teal-night);
+  --color-dusk-teal-light: var(--dusk-teal-light);
   --color-dusk-glass: var(--dusk-glass);
   --color-dusk-brown: var(--dusk-brown);
   --color-dusk-leaf: var(--dusk-leaf);

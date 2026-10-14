@@ -2,8 +2,8 @@ import type { SVGProps } from "react";
 import { cx } from "@/lib/cx";
 
 /* The "dusk" style: flat shapes with no outline. Depth comes from giving every
-   form a lit face and a shaded face, and the whole scene is cobalt against
-   orange — complementary colours — with a little leaf green for life. It sits
+   form a lit face and a shaded face, and the whole scene is brand teal against
+   brand amber — complementary colours — with a little leaf green for life. It sits
    beside the outlined 96px drawings; it never replaces them. */
 
 const tones = {
@@ -11,10 +11,10 @@ const tones = {
   ember: "fill-dusk-ember",
   cloud: "fill-dusk-cloud",
   cloudSoft: "fill-dusk-cloud-soft",
-  blue: "fill-dusk-blue",
-  deep: "fill-dusk-blue-deep",
-  night: "fill-dusk-blue-night",
-  light: "fill-dusk-blue-light",
+  blue: "fill-dusk-teal",
+  deep: "fill-dusk-teal-deep",
+  night: "fill-dusk-teal-night",
+  light: "fill-dusk-teal-light",
   glass: "fill-dusk-glass",
   brown: "fill-dusk-brown",
   leaf: "fill-dusk-leaf",
@@ -106,8 +106,8 @@ function Beacon({ x, y }: { x: number; y: number }) {
         strokeWidth={3}
         style={{ transformBox: "fill-box", transformOrigin: "center" }}
       />
-      <Path tone="paper" d="M0 0 L-13 -20 A16 16 0 1 1 13 -20 Z" />
-      <circle r={6} cy={-28} className="fill-dusk-ember" />
+      <Path tone="night" d="M0 0 L-13 -20 A16 16 0 1 1 13 -20 Z" />
+      <circle r={6} cy={-28} className="fill-dusk-sky" />
     </g>
   );
 }
@@ -165,7 +165,7 @@ export function DuskScene({ className }: { className?: string }) {
       <Plant x={190} y={GROUND} scale={0.8} />
       <Plant x={1048} y={GROUND} scale={0.85} />
 
-      {/* the street, which the page's night-blue footer carries on from */}
+      {/* the street, which the page's dark-teal footer carries on from */}
       <Rect tone="night" x={0} y={GROUND} width={1200} height={20} />
     </svg>
   );

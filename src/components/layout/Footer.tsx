@@ -4,12 +4,12 @@ import { StoreButtons } from "@/components/StoreButtons";
 import { Container } from "@/components/ui/Container";
 import { nav, site } from "@/content/site";
 
-/* The page ends on a poster: an orange sky with the wordmark as oversized
-   lettering, a cobalt town standing on a night-blue street, and the links
+/* The page ends on a poster: an amber sky with the wordmark as oversized
+   lettering, a teal town standing on a dark-teal street, and the links
    sitting on that street. All colours are the dusk tokens. */
 export function Footer() {
   return (
-    <footer className="overflow-hidden bg-dusk-blue-night text-on-ink">
+    <footer className="overflow-hidden bg-dusk-teal-night text-on-ink">
       <div className="relative bg-dusk-sky pt-10 sm:pt-14">
         <p
           aria-hidden="true"
@@ -38,7 +38,7 @@ export function Footer() {
         </nav>
       </Container>
 
-      <Container className="border-t border-dusk-blue-deep py-6">
+      <Container className="border-t border-dusk-teal-deep py-6">
         <p className="text-xs text-on-ink-muted">
           © {new Date().getFullYear()} {site.name}. All rights reserved.
         </p>
