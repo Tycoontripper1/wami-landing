@@ -1,5 +1,6 @@
 import type { IllustrationName } from "@/components/illustrations/Illustration";
 import type { TileTone } from "@/components/illustrations/IllustrationTile";
+import type { SceneName } from "@/components/illustrations/scenes";
 
 /* All copy lives here. Claims are limited to what the app actually does —
    payments are marked `soon` because they are not switched on yet. */
@@ -28,6 +29,7 @@ export const stores: Array<{ id: "ios" | "android"; kicker: string; label: strin
 ];
 
 export const nav = [
+  { label: "Browse", href: "#browse" },
   { label: "Features", href: "#features" },
   { label: "How it works", href: "#how-it-works" },
   { label: "For creatives", href: "#creatives" },
@@ -36,9 +38,71 @@ export const nav = [
 
 export const hero = {
   eyebrow: "For buyers and creatives",
-  title: "Hire creatives. Buy their work. Skip the back-and-forth.",
+  /* Kept short: the longest word sets the width of the highlighted chip, and
+     "Hire <word>" has to stay on one line next to the phone. */
+  rolling: ["creatives", "stylists", "makers", "designers", "artists"],
+  lead: "Hire",
+  title: "Buy their work. Skip the back-and-forth.",
   body: "Photographers, stylists, makers and sellers near you — browse their work, talk to them, and book a date, all without leaving the app.",
 };
+
+/** The categories the app actually has (Fashion, Beauty, Accessories, Art, Photography, Digital). */
+export const categories: Array<{
+  id: string;
+  title: string;
+  body: string;
+  tone: TileTone;
+  scene: SceneName;
+}> = [
+  {
+    id: "photography",
+    title: "Photography",
+    body: "Portraits, events and product shoots from photographers in your city.",
+    tone: "a",
+    scene: "camera",
+  },
+  {
+    id: "beauty",
+    title: "Hair & beauty",
+    body: "Stylists, braiders and makeup artists you can book for a date and time.",
+    tone: "d",
+    scene: "beauty",
+  },
+  {
+    id: "fashion",
+    title: "Fashion & accessories",
+    body: "Clothes, bags and pieces made by the people who designed them.",
+    tone: "b",
+    scene: "fashion",
+  },
+  {
+    id: "art",
+    title: "Art & design",
+    body: "Original artwork, prints and custom commissions.",
+    tone: "e",
+    scene: "art",
+  },
+  {
+    id: "digital",
+    title: "Digital",
+    body: "Designers and makers delivering work you can use straight away.",
+    tone: "c",
+    scene: "digital",
+  },
+];
+
+/** Short lines for the ticker — each pairs with a small drawing. */
+export const ticker: Array<{ illustration: IllustrationName; text: string }> = [
+  { illustration: "discover", text: "Swipe through talent" },
+  { illustration: "location", text: "Find people near you" },
+  { illustration: "book", text: "Book a date and time" },
+  { illustration: "chat", text: "Chat before you commit" },
+  { illustration: "shield", text: "Pay safely" },
+  { illustration: "star", text: "Reviews from real work" },
+  { illustration: "sell", text: "List what you make" },
+  { illustration: "import", text: "Bring your work from Instagram" },
+  { illustration: "wallet", text: "Get paid to your wallet" },
+];
 
 export const features: Feature[] = [
   {
@@ -61,41 +125,41 @@ export const features: Feature[] = [
   },
   {
     illustration: "chat",
-    tone: "b",
+    tone: "d",
     title: "Talk before you commit",
     body: "Message a creative to agree the scope and the price before anything is booked.",
   },
   {
     illustration: "shield",
-    tone: "a",
+    tone: "e",
     title: "Pay safely",
     body: "Your payment is held by Wami and released to the creative in milestones as the work is delivered.",
     soon: true,
   },
   {
     illustration: "star",
-    tone: "c",
+    tone: "a",
     title: "Reviews from real work",
     body: "Only people who have booked or bought can leave a review, so ratings come from actual jobs.",
   },
 ];
 
-export const steps = [
+export const steps: Feature[] = [
   {
-    illustration: "discover" as IllustrationName,
-    tone: "a" as TileTone,
+    illustration: "discover",
+    tone: "a",
     title: "Find someone",
     body: "Browse the feed or search your area. Save the people and products you like.",
   },
   {
-    illustration: "book" as IllustrationName,
-    tone: "b" as TileTone,
+    illustration: "book",
+    tone: "b",
     title: "Book the work",
     body: "Choose a date and time, describe the job, and send the request.",
   },
   {
-    illustration: "shield" as IllustrationName,
-    tone: "c" as TileTone,
+    illustration: "shield",
+    tone: "c",
     title: "Get it done",
     body: "Stay in touch in chat, release payment as milestones are met, and leave a review.",
   },
@@ -107,30 +171,31 @@ export const creatives = {
   body: "List what you offer, show your work, and let people in your city find you.",
   perks: [
     {
-      illustration: "sell" as IllustrationName,
-      tone: "a" as TileTone,
+      illustration: "sell",
+      tone: "a",
       title: "List services and products",
       body: "Add what you offer with a price and a description, in a few taps.",
     },
     {
-      illustration: "import" as IllustrationName,
-      tone: "b" as TileTone,
+      illustration: "import",
+      tone: "b",
       title: "Bring your work from Instagram",
       body: "Connect your account and turn your posts into listings instead of starting over.",
     },
     {
-      illustration: "wallet" as IllustrationName,
-      tone: "c" as TileTone,
+      illustration: "wallet",
+      tone: "c",
       title: "Get paid to your wallet",
       body: "Earnings land in your Wami wallet, and you request a payout to your bank.",
       soon: true,
     },
-  ],
+  ] satisfies Feature[],
 };
 
-export const audiences = [
+export const audiences: Array<{ title: string; illustration: IllustrationName; points: string[] }> = [
   {
     title: "Looking to hire or buy?",
+    illustration: "discover",
     points: [
       "Browse creatives and products near you",
       "Chat before you book",
@@ -140,6 +205,7 @@ export const audiences = [
   },
   {
     title: "Making things for a living?",
+    illustration: "sell",
     points: [
       "Set up a creative profile",
       "List services and products",

@@ -7,12 +7,14 @@ import { Faq } from "@/components/sections/Faq";
 import { Features } from "@/components/sections/Features";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { Moodboard } from "@/components/sections/Moodboard";
+import { Ticker } from "@/components/sections/Ticker";
 
 export default function Home() {
   return (
     <>
       <a
-        href="#features"
+        href="#browse"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-primary focus:px-5 focus:py-3 focus:text-on-primary"
       >
         Skip to content
@@ -20,6 +22,8 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Ticker />
+        <Moodboard />
         <Features />
         <HowItWorks />
         <Creatives />

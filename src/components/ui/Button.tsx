@@ -2,8 +2,9 @@ import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { cx } from "@/lib/cx";
 
 const variants = {
-  primary: "bg-primary text-on-primary hover:brightness-95 active:brightness-90",
-  secondary: "bg-surface text-fg border border-line hover:bg-muted",
+  primary:
+    "bg-primary text-on-primary border-2 border-ink shadow-pop hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-none",
+  secondary: "bg-surface text-fg border-2 border-ink hover:bg-muted active:scale-[0.97]",
 } as const;
 
 const sizes = {
@@ -22,7 +23,7 @@ export function Button({ variant = "primary", size = "md", className, children, 
     <a
       {...rest}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition active:scale-[0.97]",
+        "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition",
         variants[variant],
         sizes[size],
         className,

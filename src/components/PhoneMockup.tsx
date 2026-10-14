@@ -1,5 +1,7 @@
 import { LogoMark } from "@/components/brand/Logo";
+import { Pin } from "@/components/illustrations/decor";
 import { Illustration, type IllustrationName } from "@/components/illustrations/Illustration";
+import { tileTones, type TileTone } from "@/components/illustrations/IllustrationTile";
 import { C, P, R } from "@/components/illustrations/shapes";
 import { Drift } from "@/components/ui/Drift";
 import { cx } from "@/lib/cx";
@@ -29,6 +31,7 @@ const tabs = ["Discover", "Trending", "Near You"];
 
 type StickerProps = {
   name: IllustrationName;
+  tone: TileTone;
   /** Position and tilt. */
   className: string;
   /** Offsets each sticker's float so they never move in step. */
@@ -37,15 +40,17 @@ type StickerProps = {
   drift: number;
 };
 
-/* Three layers, each owning one kind of motion so they never fight:
-   Drift (scroll parallax, GSAP) → positioned/tilted wrapper → float (CSS loop). */
-function Sticker({ name, className, delay, drift }: StickerProps) {
+/* A card pinned to the board. Three layers, each owning one kind of motion
+   so they never fight: Drift (scroll parallax, GSAP) → positioned/tilted
+   wrapper → float (CSS loop). */
+function Sticker({ name, tone, className, delay, drift }: StickerProps) {
   return (
     <Drift distance={drift} className={cx("absolute hidden sm:block", className)}>
       <div
-        className="size-20 animate-float rounded-2xl border border-line bg-surface p-3 shadow-lg"
+        className={cx("relative size-24 animate-float rounded-2xl border-2 border-ink p-3 shadow-pop", tileTones[tone])}
         style={{ animationDelay: delay }}
       >
+        <Pin tone="accent" className="absolute -top-5 left-1/2 h-7 -translate-x-1/2" />
         <Illustration name={name} />
       </div>
     </Drift>
@@ -55,10 +60,10 @@ function Sticker({ name, className, delay, drift }: StickerProps) {
 export function PhoneMockup() {
   return (
     <div className="relative mx-auto w-[17.5rem] sm:w-[19rem]">
-      <Sticker name="chat" className="-left-20 top-16 -rotate-6" delay="0s" drift={-70} />
-      <Sticker name="star" className="-right-16 top-6 rotate-6" delay="-2.3s" drift={-130} />
-      <Sticker name="book" className="-left-14 bottom-24 rotate-3" delay="-4.1s" drift={60} />
-      <Sticker name="shield" className="-right-20 bottom-10 -rotate-3" delay="-5.6s" drift={110} />
+      <Sticker name="chat" tone="d" className="-left-24 top-16 -rotate-6" delay="0s" drift={-70} />
+      <Sticker name="star" tone="b" className="-right-20 top-4 rotate-6" delay="-2.3s" drift={-130} />
+      <Sticker name="book" tone="c" className="-left-16 bottom-24 rotate-3" delay="-4.1s" drift={60} />
+      <Sticker name="shield" tone="a" className="-right-24 bottom-10 -rotate-3" delay="-5.6s" drift={110} />
 
       <div className="rounded-[2.75rem] bg-ill-ink p-2.5 shadow-2xl ring-1 ring-line">
         <div className="overflow-hidden rounded-[2.1rem] bg-canvas">
