@@ -3,8 +3,11 @@ import { storeLogos } from "@/components/StoreLogos";
 import { stores } from "@/content/site";
 import { cx } from "@/lib/cx";
 
+/* Sets its own text colour (text-fg) alongside its own background, so it
+   reads correctly wherever it's placed — e.g. inside the dark CTA card,
+   where the inherited colour is white. */
 const pill =
-  "inline-flex h-16 items-center gap-3.5 rounded-2xl border border-line bg-surface pl-5 pr-6 text-left transition";
+  "inline-flex h-16 items-center gap-3.5 rounded-2xl border border-line bg-surface pl-5 pr-6 text-left text-fg transition";
 
 type Store = (typeof stores)[number];
 
