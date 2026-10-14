@@ -81,9 +81,6 @@ function Star() {
     <>
       <P tone="accent" d="M48 16 L55.5 36 L76.5 37.2 L60.2 50.5 L65.7 71 L48 59.5 L30.3 71 L35.8 50.5 L19.5 37.2 L40.5 36 Z" />
       <P tone="paper" d="M48 30 L51.5 39.5 L61.5 40 L53.8 46.3 L56.4 56 L48 50.5 L39.6 56 L42.2 46.3 L34.5 40 L44.5 39.5 Z" strokeWidth={2} />
-      <P d="M16 14 V26 M10 20 H22" strokeWidth={3} />
-      <P d="M82 56 V66 M77 61 H87" strokeWidth={3} />
-      <C cx={80} cy={22} r={3.5} tone="primary" strokeWidth={2} />
     </>
   );
 }

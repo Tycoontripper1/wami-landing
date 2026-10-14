@@ -4,10 +4,6 @@ import { C, E, P, R } from "./shapes";
 /* Large scenes on a 320×320 grid. Same shape system and tokens as the small
    drawings, so they read as one family — just given room to tell a story. */
 
-function Sparkle({ x, y, size = 10 }: { x: number; y: number; size?: number }) {
-  return <P d={`M${x} ${y - size} V${y + size} M${x - size} ${y} H${x + size}`} strokeWidth={3} />;
-}
-
 function Camera() {
   return (
     <>
@@ -31,8 +27,6 @@ function Camera() {
       <C cx={160} cy={204} r={24} tone="ink" />
       <C cx={148} cy={192} r={7} tone="paper" strokeWidth={0} />
       <C cx={240} cy={152} r={8} tone="paper" />
-      <Sparkle x={36} y={176} />
-      <Sparkle x={290} y={200} size={8} />
     </>
   );
 }
@@ -44,8 +38,6 @@ function Beauty() {
       <C cx={133} cy={118} r={76} tone="primary" />
       <C cx={133} cy={118} r={58} tone="soft" />
       <P d="M96 96 C104 76 124 66 146 70" strokeWidth={5} className="stroke-ill-paper" />
-      <Sparkle x={160} y={104} size={11} />
-      <Sparkle x={104} y={142} size={7} />
       <R x={232} y={196} width={42} height={80} rx={9} tone="ink" />
       <R x={236} y={150} width={34} height={52} rx={7} tone="accent" />
       <P tone="warm" d="M240 150 L253 112 L266 150 Z" />
@@ -74,7 +66,6 @@ function Fashion() {
       <C cx={58} cy={218} r={20} tone="soft" />
       <C cx={106} cy={218} r={20} tone="soft" />
       <P d="M78 218 H86" strokeWidth={3} />
-      <Sparkle x={40} y={74} size={9} />
     </>
   );
 }
@@ -94,7 +85,6 @@ function Art() {
         <P tone="primary" d="M96 219 C70 219 58 232 50 232 C58 232 70 245 96 245 Z" />
       </g>
       <P tone="primary" d="M270 262 C270 252 278 244 278 244 C278 244 286 252 286 262 C286 270 270 270 270 262 Z" />
-      <Sparkle x={52} y={60} size={10} />
     </>
   );
 }
@@ -111,8 +101,6 @@ function Digital() {
       <R x={236} y={124} width={52} height={96} rx={6} tone="paper" strokeWidth={2} />
       <C cx={262} cy={236} r={5} tone="paper" strokeWidth={2} />
       <P tone="accent" d="M140 130 L140 186 L154 172 L166 198 L178 192 L166 166 L186 164 Z" />
-      <Sparkle x={274} y={70} size={10} />
-      <Sparkle x={30} y={116} size={8} />
     </>
   );
 }
@@ -134,7 +122,6 @@ function Stall() {
       <C cx={150} cy={198} r={16} tone="primary" />
       <R x={196} y={176} width={44} height={38} rx={6} tone="accent" />
       <R x={44} y={262} width={232} height={14} rx={4} tone="ink" />
-      <Sparkle x={300} y={40} size={9} />
     </>
   );
 }
@@ -162,14 +149,6 @@ export function Scene({ name, className }: { name: SceneName; className?: string
       className={cx("size-full", className)}
     >
       <Drawing />
-    </svg>
-  );
-}
-
-export function SceneSparkle({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={cx("size-6 fill-ill-accent stroke-ill-ink", className)} strokeWidth={2} strokeLinejoin="round">
-      <path d="M12 2 L14.4 9.6 L22 12 L14.4 14.4 L12 22 L9.6 14.4 L2 12 L9.6 9.6 Z" />
     </svg>
   );
 }
