@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by data-theme on <html>, set before first paint by the
+   inline script in layout.tsx. `dark:` utilities are only for the rare case a
+   component needs structure (not colour) to change — colours never need them,
+   because every colour below is a variable that already swaps. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ── Colour tokens ─────────────────────────────────────────────────────────
+   The ONLY place a raw colour value is allowed to live. Components use the
+   semantic utilities generated from @theme below (bg-canvas, text-fg-muted,
+   fill-ill-paper …). Brand values come from the app (constants/Brand.ts):
+   cyan #00BCD4, amber #FFA000, dark #0F1419. */
+:root {
+  color-scheme: light;
+
+  --canvas: #fbfaf7;
+  --surface: #ffffff;
+  --muted: #f2efe8;
+  --line: #e4dfd3;
+
+  --fg: #0f1419;
+  --fg-muted: #4a545e;
+  --fg-subtle: #66707a;
+
+  --primary: #00bcd4;
+  --on-primary: #0f1419; /* white on #00bcd4 is 2.3:1; dark is 8.1:1 */
+  --primary-deep: #00838f;
+  --link: #00838f; /* 4.5:1 on the canvas */
+  --accent: #ffa000;
+  --on-accent: #0f1419;
+
+  /* Illustration palette — drawn once, themed here. */
+  --ill-ink: #0f1419;
+  --ill-paper: #ffffff;
+  --ill-soft: #bdeef5;
+  --ill-warm: #ffd98a;
+
+  /* Backgrounds the illustration tiles sit on. */
+  --tile-a: #d9f4f8;
+  --tile-b: #ffebc2;
+  --tile-c: #e8e3d6;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --canvas: #0f1419;
+  --surface: #161d25;
+  --muted: #1c252f;
+  --line: #2a343f;
+
+  --fg: #f3f5f7;
+  --fg-muted: #b3bcc5;
+  --fg-subtle: #8a949e;
+
+  --primary: #00bcd4;
+  --on-primary: #0f1419;
+  --primary-deep: #00838f;
+  --link: #33c9e2;
+  --accent: #ffa000;
+  --on-accent: #0f1419;
+
+  --ill-ink: #0f1419;
+  --ill-paper: #f3f5f7;
+  --ill-soft: #8fe3ee;
+  --ill-warm: #ffc964;
+
+  --tile-a: #12353c;
+  --tile-b: #3a2c0f;
+  --tile-c: #222c36;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-deep: var(--primary-deep);
+  --color-link: var(--link);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-ill-ink: var(--ill-ink);
+  --color-ill-paper: var(--ill-paper);
+  --color-ill-soft: var(--ill-soft);
+  --color-ill-warm: var(--ill-warm);
+  --color-ill-primary: var(--primary);
+  --color-ill-accent: var(--accent);
+  --color-tile-a: var(--tile-a);
+  --color-tile-b: var(--tile-b);
+  --color-tile-c: var(--tile-c);
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--canvas);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: var(--on-primary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
