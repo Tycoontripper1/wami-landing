@@ -17,7 +17,7 @@ export function Footer() {
         >
           wami
         </p>
-        <DuskScene className="relative -mt-[4vw] h-48 sm:h-64 lg:h-80" />
+        <DuskScene className="relative -mb-px -mt-[4vw] h-56 sm:h-[18.5rem] lg:h-[23rem]" />
       </div>
 
       <Container className="flex flex-col gap-10 pb-10 pt-12 lg:flex-row lg:items-start lg:justify-between">
