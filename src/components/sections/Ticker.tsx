@@ -23,7 +23,7 @@ export function Ticker() {
   return (
     <section
       aria-label="What Wami does"
-      className="relative z-10 -my-1 -rotate-[1.2deg] scale-x-[1.04] overflow-hidden border-y-2 border-ink bg-ink py-6 text-on-ink"
+      className="relative z-10 -my-1 -rotate-[1.2deg] scale-x-[1.04] overflow-hidden border-y-2 border-ink bg-dusk-blue py-6 text-on-ink"
     >
       {/* leans with scroll speed; the marquee slides inside it */}
       <VelocitySkew>
