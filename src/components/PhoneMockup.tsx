@@ -9,13 +9,23 @@ import { Drift } from "@/components/ui/Drift";
 import { cx } from "@/lib/cx";
 
 /* A drawn stand-in for the app's Discover screen: the real layout (location,
-   Discover / Trending / Near You tabs, a card, pass / like) with an illustrated
-   scene instead of a photo, so nothing here pretends to be a real person. */
+   Discover / Trending / Near You tabs, a card, pass / like, the five bottom
+   tabs) with an illustrated scene instead of a photo, so nothing here
+   pretends to be a real person. */
 
 function Scene() {
   return (
-    <svg viewBox="0 0 240 280" className="size-full" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <R x={0} y={0} width={240} height={280} tone="soft" strokeWidth={0} />
+    <svg
+      viewBox="0 0 240 280"
+      preserveAspectRatio="xMidYMax slice"
+      className="size-full"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {/* tall sky, so the scene still fills a card taller than the drawing */}
+      <R x={0} y={-400} width={240} height={680} tone="soft" strokeWidth={0} />
       <C cx={186} cy={58} r={24} tone="accent" />
       <P tone="primary" d="M-2 178 C44 140 104 140 150 168 C180 186 214 180 242 164 V282 H-2 Z" />
       <P tone="paper" d="M-2 214 C56 190 116 198 168 214 C198 224 224 218 242 210 V282 H-2 Z" />
@@ -29,7 +39,8 @@ function Scene() {
   );
 }
 
-const tabs = ["Discover", "Trending", "Near You"];
+const feedTabs = ["Discover", "Trending", "Near You"];
+const appTabs = ["Home", "Shop", "Post", "Chats", "Profile"];
 
 type StickerProps = {
   name: IllustrationName;
@@ -61,24 +72,24 @@ function Sticker({ name, tone, className, delay, drift }: StickerProps) {
 
 export function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-[17.5rem] sm:w-[19rem]">
-      <Sticker name="chat" tone="d" className="-left-24 top-16 -rotate-6" delay="0s" drift={-70} />
-      <Sticker name="star" tone="b" className="-right-20 top-4 rotate-6" delay="-2.3s" drift={-130} />
-      <Sticker name="book" tone="c" className="-left-16 bottom-24 rotate-3" delay="-4.1s" drift={60} />
-      <Sticker name="shield" tone="a" className="-right-24 bottom-10 -rotate-3" delay="-5.6s" drift={110} />
+    <div className="relative mx-auto w-[17.5rem] sm:w-[20rem] lg:w-[21rem]">
+      <Sticker name="chat" tone="d" className="-left-24 top-24 -rotate-6" delay="0s" drift={-70} />
+      <Sticker name="star" tone="b" className="-right-24 top-8 rotate-6" delay="-2.3s" drift={-130} />
+      <Sticker name="book" tone="c" className="-left-20 bottom-40 rotate-3" delay="-4.1s" drift={60} />
+      <Sticker name="shield" tone="a" className="-right-28 bottom-16 -rotate-3" delay="-5.6s" drift={110} />
 
       <PhoneFrame>
-        <div className="flex items-center gap-2 px-5 pt-5">
-          <LogoMark className="h-5" />
-          <span className="text-sm font-bold">Lagos, Nigeria</span>
+        <div className="flex items-center gap-[0.5em] px-[1.3em] pt-[0.4em]">
+          <LogoMark className="h-[1.5em]" />
+          <span className="text-[1.05em] font-bold">Lagos, Nigeria</span>
         </div>
 
-        <div className="flex gap-1.5 px-4 pt-3">
-          {tabs.map((tab, index) => (
+        <div className="flex gap-[0.4em] px-[1.1em] pt-[0.7em]">
+          {feedTabs.map((tab, index) => (
             <span
               key={tab}
               className={cx(
-                "rounded-full px-3 py-1.5 text-[11px] font-semibold",
+                "rounded-full px-[0.85em] py-[0.4em] text-[0.82em] font-semibold",
                 index === 0 ? "bg-primary text-on-primary" : "border border-line text-fg-muted",
               )}
             >
@@ -88,21 +99,36 @@ export function PhoneMockup() {
         </div>
 
         {/* Mirrors the app: pass / like swipes the card off, the next settles in. */}
-        <div className="relative mx-4 mt-3 aspect-[6/7] animate-swipe overflow-hidden rounded-3xl border border-line">
+        <div className="relative mx-[1.1em] mt-[0.8em] min-h-0 flex-1 animate-swipe overflow-hidden rounded-3xl border border-line">
           <Scene />
-          <div className="absolute inset-x-0 bottom-0 bg-ill-ink/85 px-4 py-3 text-ill-paper">
-            <p className="font-display text-base font-bold leading-tight">Portrait sessions</p>
-            <p className="text-xs opacity-80">Photographer · Near you</p>
+          <div className="absolute inset-x-0 bottom-0 bg-ill-ink/85 px-[1.1em] py-[0.7em] text-ill-paper">
+            <p className="font-display text-[1.15em] font-bold leading-tight">Portrait sessions</p>
+            <p className="text-[0.82em] opacity-80">Photographer · Near you</p>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-6 py-4">
+        <div className="flex items-center justify-center gap-6 py-[0.9em]">
           <span className="grid size-11 place-items-center rounded-full border border-line bg-surface">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="size-5 stroke-fg" fill="none" strokeWidth={2.5} strokeLinecap="round">
               <path d="M6 6l12 12M18 6L6 18" />
             </svg>
           </span>
           <LikeButton />
+        </div>
+
+        {/* the app's real bottom tabs */}
+        <div className="mx-[0.9em] mb-[1.9em] flex items-center justify-between rounded-full border border-line bg-surface px-[0.4em] py-[0.35em]">
+          {appTabs.map((tab, index) => (
+            <span
+              key={tab}
+              className={cx(
+                "rounded-full px-[0.6em] py-[0.45em] text-[0.7em] font-bold",
+                index === 0 ? "bg-primary text-on-primary" : "text-fg-muted",
+              )}
+            >
+              {tab}
+            </span>
+          ))}
         </div>
       </PhoneFrame>
     </div>

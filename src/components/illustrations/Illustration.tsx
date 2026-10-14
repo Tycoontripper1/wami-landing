@@ -10,6 +10,10 @@ type IllustrationProps = {
   title?: string;
 };
 
+/** Fills its box by default; pass any `size-*`, `w-*` or `h-*` and that replaces the default instead of competing with it. */
+const hasOwnSize = (className?: string) =>
+  className?.split(" ").some((c) => /^(size|w|h)-/.test(c)) ?? false;
+
 export function Illustration({ name, className, title }: IllustrationProps) {
   const Drawing = drawings[name];
   return (
@@ -18,7 +22,7 @@ export function Illustration({ name, className, title }: IllustrationProps) {
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={cx("size-full", className)}
+      className={cx(hasOwnSize(className) ? undefined : "size-full", className)}
       role={title ? "img" : undefined}
       aria-hidden={title ? undefined : true}
     >

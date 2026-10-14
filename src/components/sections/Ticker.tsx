@@ -21,7 +21,10 @@ function TickerItem({ item, index }: { item: (typeof ticker)[number]; index: num
    The second copy is hidden from assistive tech. */
 export function Ticker() {
   return (
-    <section aria-label="What Wami does" className="overflow-hidden border-y-2 border-ink bg-ink py-6 text-on-ink">
+    <section
+      aria-label="What Wami does"
+      className="relative z-10 -my-1 -rotate-[1.2deg] scale-x-[1.04] overflow-hidden border-y-2 border-ink bg-ink py-6 text-on-ink"
+    >
       {/* leans with scroll speed; the marquee slides inside it */}
       <VelocitySkew>
         <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">

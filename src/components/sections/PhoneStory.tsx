@@ -20,7 +20,7 @@ import { whenMotionAllowed } from "@/lib/motion";
 const weekdays = ["M", "T", "W", "T", "F"];
 
 function ScreenShell({ tone, children }: { tone: string; children: ReactNode }) {
-  return <div className={cx("absolute inset-0 flex flex-col gap-3 p-4 pt-8", tone)}>{children}</div>;
+  return <div className={cx("absolute inset-0 flex flex-col gap-3 p-4 pt-[15%]", tone)}>{children}</div>;
 }
 
 function DiscoverScreen() {
@@ -159,7 +159,7 @@ export function PhoneStory() {
             </div>
           </div>
 
-          <div data-phone className="relative h-[50svh] max-h-[34rem] aspect-[9/19]">
+          <div data-phone className="relative aspect-[9/19.5] h-[54svh] max-h-[36rem]">
             <Pin tone="accent" className="absolute -top-4 left-1/2 z-10 h-8 -translate-x-1/2" />
             <PhoneFrame className="h-full w-full">
               {screens.map((Screen, i) => (
