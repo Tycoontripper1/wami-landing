@@ -1,24 +1,41 @@
-import { Button } from "@/components/ui/Button";
+import type { ReactNode } from "react";
+import { storeLogos } from "@/components/StoreLogos";
 import { stores } from "@/content/site";
 import { cx } from "@/lib/cx";
 
-/** Real link when a store URL is configured; an honest, non-clickable "coming soon" otherwise. */
+const pill =
+  "inline-flex h-16 items-center gap-3.5 rounded-2xl border border-line bg-surface pl-5 pr-6 text-left transition";
+
+type Store = (typeof stores)[number];
+
+function StoreLabel({ store, children }: { store: Store; children?: ReactNode }) {
+  const Logo = storeLogos[store.id];
+  return (
+    <>
+      <Logo />
+      <span className="flex flex-col leading-tight">
+        <span className="text-xs text-fg-muted">{store.kicker}</span>
+        <span className="font-display text-lg font-bold">{store.label}</span>
+      </span>
+      {children}
+    </>
+  );
+}
+
+/** A real link once `href` is set in content/site.ts; until then an honest, non-clickable "coming soon". */
 export function StoreButtons({ className }: { className?: string }) {
   return (
     <div className={cx("flex flex-wrap gap-3", className)}>
       {stores.map((store) =>
         store.href ? (
-          <Button key={store.id} href={store.href} size="lg">
-            Get it on {store.label}
-          </Button>
+          <a key={store.id} href={store.href} className={cx(pill, "hover:-translate-y-0.5 hover:border-primary active:scale-[0.97]")}>
+            <StoreLabel store={store} />
+          </a>
         ) : (
-          <span
-            key={store.id}
-            aria-disabled="true"
-            className="inline-flex h-14 items-center gap-3 rounded-full border border-line bg-surface px-7 text-base font-semibold text-fg-muted"
-          >
-            {store.label}
-            <span className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-bold text-on-accent">Coming soon</span>
+          <span key={store.id} aria-disabled="true" className={cx(pill, "cursor-default")}>
+            <StoreLabel store={store}>
+              <span className="ml-1 rounded-full bg-accent px-2.5 py-0.5 text-xs font-bold text-on-accent">Coming soon</span>
+            </StoreLabel>
           </span>
         ),
       )}

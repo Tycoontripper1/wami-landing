@@ -22,9 +22,9 @@ export const site = {
 
 /* `href: null` renders an honest "coming soon" button instead of a dead link.
    Set the real store URLs here when the listings exist. */
-export const stores = [
-  { id: "ios", label: "iPhone", href: null as string | null },
-  { id: "android", label: "Android", href: null as string | null },
+export const stores: Array<{ id: "ios" | "android"; kicker: string; label: string; href: string | null }> = [
+  { id: "ios", kicker: "Download on the", label: "App Store", href: null },
+  { id: "android", kicker: "Get it on", label: "Google Play", href: null },
 ];
 
 export const nav = [

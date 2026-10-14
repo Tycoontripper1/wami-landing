@@ -40,6 +40,12 @@
   --tile-a: #d9f4f8;
   --tile-b: #ffebc2;
   --tile-c: #e8e3d6;
+
+  /* Google Play mark — fixed third-party brand colours, same in both themes. */
+  --play-blue: #4285f4;
+  --play-green: #00ad4b;
+  --play-yellow: #ffba00;
+  --play-red: #ea4335;
 }
 
 :root[data-theme="dark"] {
@@ -94,6 +100,10 @@
   --color-tile-a: var(--tile-a);
   --color-tile-b: var(--tile-b);
   --color-tile-c: var(--tile-c);
+  --color-play-blue: var(--play-blue);
+  --color-play-green: var(--play-green);
+  --color-play-yellow: var(--play-yellow);
+  --color-play-red: var(--play-red);
 
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
