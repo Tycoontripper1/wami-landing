@@ -25,7 +25,14 @@ type IllustrationTileProps = {
 /** A drawing seated on a tinted tile — the one way illustrations appear in the UI. */
 export function IllustrationTile({ name, tone = "a", size = "lg", className }: IllustrationTileProps) {
   return (
-    <div className={cx("shrink-0 border border-line", tileTones[tone], tileSizes[size].box, className)}>
+    <div
+      className={cx(
+        "shrink-0 border border-line transition duration-300 group-hover:-rotate-3 group-hover:scale-105",
+        tileTones[tone],
+        tileSizes[size].box,
+        className,
+      )}
+    >
       <Illustration name={name} />
     </div>
   );

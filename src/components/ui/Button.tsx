@@ -22,7 +22,7 @@ export function Button({ variant = "primary", size = "md", className, children, 
     <a
       {...rest}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition",
+        "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition active:scale-[0.97]",
         variants[variant],
         sizes[size],
         className,

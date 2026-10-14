@@ -1,6 +1,7 @@
 import { LogoMark } from "@/components/brand/Logo";
 import { Illustration, type IllustrationName } from "@/components/illustrations/Illustration";
 import { C, P, R } from "@/components/illustrations/shapes";
+import { Drift } from "@/components/ui/Drift";
 import { cx } from "@/lib/cx";
 
 /* A drawn stand-in for the app's Discover screen: the real layout (location,
@@ -28,24 +29,36 @@ const tabs = ["Discover", "Trending", "Near You"];
 
 type StickerProps = {
   name: IllustrationName;
+  /** Position and tilt. */
   className: string;
+  /** Offsets each sticker's float so they never move in step. */
+  delay: string;
+  /** Scroll parallax travel in px; differs per sticker so they separate as you scroll. */
+  drift: number;
 };
 
-function Sticker({ name, className }: StickerProps) {
+/* Three layers, each owning one kind of motion so they never fight:
+   Drift (scroll parallax, GSAP) → positioned/tilted wrapper → float (CSS loop). */
+function Sticker({ name, className, delay, drift }: StickerProps) {
   return (
-    <div className={cx("absolute hidden size-20 rounded-2xl border border-line bg-surface p-3 shadow-lg sm:block", className)}>
-      <Illustration name={name} />
-    </div>
+    <Drift distance={drift} className={cx("absolute hidden sm:block", className)}>
+      <div
+        className="size-20 animate-float rounded-2xl border border-line bg-surface p-3 shadow-lg"
+        style={{ animationDelay: delay }}
+      >
+        <Illustration name={name} />
+      </div>
+    </Drift>
   );
 }
 
 export function PhoneMockup() {
   return (
     <div className="relative mx-auto w-[17.5rem] sm:w-[19rem]">
-      <Sticker name="chat" className="-left-20 top-16 -rotate-6" />
-      <Sticker name="star" className="-right-16 top-6 rotate-6" />
-      <Sticker name="book" className="-left-14 bottom-24 rotate-3" />
-      <Sticker name="shield" className="-right-20 bottom-10 -rotate-3" />
+      <Sticker name="chat" className="-left-20 top-16 -rotate-6" delay="0s" drift={-70} />
+      <Sticker name="star" className="-right-16 top-6 rotate-6" delay="-2.3s" drift={-130} />
+      <Sticker name="book" className="-left-14 bottom-24 rotate-3" delay="-4.1s" drift={60} />
+      <Sticker name="shield" className="-right-20 bottom-10 -rotate-3" delay="-5.6s" drift={110} />
 
       <div className="rounded-[2.75rem] bg-ill-ink p-2.5 shadow-2xl ring-1 ring-line">
         <div className="overflow-hidden rounded-[2.1rem] bg-canvas">
@@ -68,7 +81,8 @@ export function PhoneMockup() {
             ))}
           </div>
 
-          <div className="relative mx-4 mt-3 aspect-[6/7] overflow-hidden rounded-3xl border border-line">
+          {/* Mirrors the app: pass / like swipes the card off, the next settles in. */}
+          <div className="relative mx-4 mt-3 aspect-[6/7] animate-swipe overflow-hidden rounded-3xl border border-line">
             <Scene />
             <div className="absolute inset-x-0 bottom-0 bg-ill-ink/85 px-4 py-3 text-ill-paper">
               <p className="font-display text-base font-bold leading-tight">Portrait sessions</p>
@@ -82,7 +96,7 @@ export function PhoneMockup() {
                 <path d="M6 6l12 12M18 6L6 18" />
               </svg>
             </span>
-            <span className="grid size-12 place-items-center rounded-full bg-accent">
+            <span className="grid size-12 animate-pop place-items-center rounded-full bg-accent">
               <svg viewBox="0 0 24 24" aria-hidden="true" className="size-6 stroke-on-accent" fill="none" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 20.500C4.500 15 3 10 6.500 7.500 9 5.800 12 7.200 12 9.800 12 7.200 15 5.800 17.500 7.500 21 10 19.500 15 12 20.500Z" />
               </svg>

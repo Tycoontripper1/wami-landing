@@ -99,6 +99,46 @@
   --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* ── Motion ────────────────────────────────────────────────────────────────
+   Every animation is declared here once and used through `animate-*`.
+   Nothing below depends on a colour, so it's theme-agnostic. */
+@theme {
+  --animate-rise: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-fade-down: fade-down 300ms ease both;
+  /* One 6s loop drives the phone: the card is swiped away, the next one
+     settles in, and the like button pulses just before the swipe. */
+  --animate-swipe: swipe 6s ease-in-out infinite;
+  --animate-pop: pop 6s ease-in-out infinite;
+
+  @keyframes rise {
+    from { opacity: 0; translate: 0 22px; }
+    to { opacity: 1; translate: 0 0; }
+  }
+  @keyframes float {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -10px; }
+  }
+  @keyframes fade-down {
+    from { opacity: 0; translate: 0 -6px; }
+    to { opacity: 1; translate: 0 0; }
+  }
+  @keyframes swipe {
+    0%, 62% { translate: 0 0; rotate: 0deg; opacity: 1; }
+    76% { translate: 120% -6%; rotate: 12deg; opacity: 0; }
+    77% { translate: -18% 0; rotate: -4deg; opacity: 0; }
+    92%, 100% { translate: 0 0; rotate: 0deg; opacity: 1; }
+  }
+  @keyframes pop {
+    0%, 52%, 70%, 100% { scale: 1; }
+    60% { scale: 1.22; }
+  }
+}
+
+/* Scroll-driven motion (reveals, the connector line, sticker parallax) is GSAP
+   + ScrollTrigger — see lib/motion.ts. The CSS above is only for small loops
+   that need no scroll position. */
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -125,6 +165,8 @@
   }
 }
 
+/* Reduced motion: no CSS animation at all (not "very fast" — an infinite loop
+   at 0.01ms would strobe). GSAP effects are gated separately in lib/motion.ts. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -132,7 +174,7 @@
   *,
   *::before,
   *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
+    animation: none !important;
+    transition: none !important;
   }
 }

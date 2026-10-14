@@ -5,19 +5,19 @@ import { cx } from "@/lib/cx";
 
 const layouts = {
   card: {
-    wrap: "flex flex-col gap-5 rounded-3xl border border-line bg-surface p-6",
+    wrap: "group flex flex-col gap-5 rounded-3xl border border-line bg-surface p-6 transition duration-300 hover:-translate-y-1 hover:border-primary",
     tile: "lg",
     text: "",
     heading: "",
   },
   row: {
-    wrap: "flex items-start gap-5",
+    wrap: "group flex items-start gap-5",
     tile: "md",
     text: "pt-1",
     heading: "",
   },
   step: {
-    wrap: "flex flex-col items-center gap-6 text-center",
+    wrap: "group flex flex-col items-center gap-6 text-center",
     tile: "xl",
     text: "max-w-xs",
     heading: "justify-center",

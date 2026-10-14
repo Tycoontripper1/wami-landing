@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { faqs } from "@/content/site";
@@ -7,7 +8,7 @@ export function Faq() {
     <Section id="faq">
       <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <SectionHeader eyebrow="Questions" title="Good to know before you start." />
-        <div className="border-t border-line">
+        <Reveal delay={100} className="border-t border-line">
           {faqs.map((item) => (
             <details key={item.q} className="group border-b border-line">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-lg font-semibold [&::-webkit-details-marker]:hidden">
@@ -16,10 +17,10 @@ export function Faq() {
                   <path d="M12 5v14M5 12h14" />
                 </svg>
               </summary>
-              <p className="max-w-2xl pb-6 leading-relaxed text-fg-muted">{item.a}</p>
+              <p className="max-w-2xl animate-fade-down pb-6 leading-relaxed text-fg-muted">{item.a}</p>
             </details>
           ))}
-        </div>
+        </Reveal>
       </div>
     </Section>
   );
