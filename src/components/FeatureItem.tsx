@@ -1,56 +1,47 @@
-import { Illustration } from "@/components/illustrations/Illustration";
-import { boldTones, IllustrationTile, tileTones, type BoldTone } from "@/components/illustrations/IllustrationTile";
 import { SoonBadge } from "@/components/ui/SoonBadge";
+import { Vignette } from "@/components/vignettes/Vignettes";
 import type { Feature } from "@/content/site";
 import { cx } from "@/lib/cx";
 
 const layouts = {
-  /* a pastel colour-block card with the drawing sitting straight on it */
+  /* a plain card: a crop of the app on top, the words underneath */
   card: {
-    wrap: "group flex flex-col gap-4 rounded-3xl border-2 border-ink p-6 transition duration-300 hover:-translate-y-1 hover:shadow-pop",
-    text: "",
-    heading: "",
+    wrap: "flex flex-col gap-5 rounded-3xl border border-line bg-surface p-3",
+    text: "px-3 pb-3",
+    vignette: "",
   },
+  /* the dark band: the crop beside the words */
   row: {
-    wrap: "group flex items-start gap-5",
-    text: "pt-1",
-    heading: "",
+    wrap: "grid items-center gap-5 sm:grid-cols-[15rem_1fr]",
+    text: "",
+    vignette: "",
   },
   step: {
-    wrap: "group flex flex-col items-center gap-6 text-center",
-    text: "max-w-xs",
-    heading: "justify-center",
+    wrap: "flex flex-col gap-5",
+    text: "",
+    vignette: "",
   },
 } as const;
 
 type FeatureItemProps = {
-  item: Pick<Feature, "illustration" | "tone" | "title" | "body" | "soon">;
+  item: Pick<Feature, "vignette" | "title" | "body" | "soon">;
   variant?: keyof typeof layouts;
   /** Set when the item sits on a dark ink band. */
   inverse?: boolean;
-  /** Card variant only: use a fully saturated colour (carousel slides) instead of the pastel tone. */
-  bold?: BoldTone;
 };
 
-/** One drawing + a title + a sentence. Used by the features grid, the steps and the creator perks. */
-export function FeatureItem({ item, variant = "card", inverse = false, bold }: FeatureItemProps) {
+/** A crop of the app, a title and a sentence. Used by the features grid, the steps and the creator perks. */
+export function FeatureItem({ item, variant = "card", inverse = false }: FeatureItemProps) {
   const layout = layouts[variant];
-  const isCard = variant === "card";
   return (
-    <article className={cx(layout.wrap, isCard && (bold ? cx(boldTones[bold], "shadow-pop") : tileTones[item.tone]))}>
-      {isCard ? (
-        <Illustration name={item.illustration} className="size-24 transition duration-300 group-hover:-rotate-3 group-hover:scale-105" />
-      ) : (
-        <IllustrationTile name={item.illustration} tone={item.tone} size={variant === "step" ? "xl" : "md"} />
-      )}
+    <article className={layout.wrap}>
+      <Vignette name={item.vignette} className={layout.vignette} />
       <div className={layout.text}>
-        <h3 className={cx("flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-xl font-bold tracking-tight", layout.heading)}>
+        <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-xl font-bold tracking-tight">
           {item.title}
           {item.soon ? <SoonBadge /> : null}
         </h3>
-        <p className={cx("mt-2 leading-relaxed", isCard ? "text-ink/80" : inverse ? "text-on-ink-muted" : "text-fg-muted")}>
-          {item.body}
-        </p>
+        <p className={cx("mt-2 leading-relaxed", inverse ? "text-on-ink-muted" : "text-fg-muted")}>{item.body}</p>
       </div>
     </article>
   );

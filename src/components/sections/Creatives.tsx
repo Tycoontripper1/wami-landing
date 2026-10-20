@@ -1,5 +1,4 @@
 import { FeatureItem } from "@/components/FeatureItem";
-import { Pin } from "@/components/illustrations/decor";
 import { Scene } from "@/components/illustrations/scenes";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
@@ -16,8 +15,7 @@ export function Creatives() {
         <div>
           <SectionHeader tone="inverse" eyebrow={creatives.eyebrow} title={creatives.title} body={creatives.body} />
           <Reveal delay={120} className="relative mt-12 max-w-md">
-            <div className="relative rounded-[2rem] border-2 border-on-ink bg-tile-b p-6 text-ink">
-              <Pin tone="primary" className="absolute -top-5 left-12" />
+            <div className="rounded-[2rem] bg-tile-b p-6 text-ink">
               <Scene name="stall" />
             </div>
           </Reveal>

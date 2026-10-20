@@ -1,5 +1,4 @@
 import { CheckList } from "@/components/CheckList";
-import { Illustration } from "@/components/illustrations/Illustration";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { audiences } from "@/content/site";
@@ -22,13 +21,9 @@ export function Audiences() {
               key={audience.title}
               as="article"
               delay={index * 120}
-              className={`relative overflow-hidden rounded-[2rem] border-2 border-ink p-8 sm:p-10 ${style.wrap}`}
+              className={`relative overflow-hidden rounded-[2rem] border border-line p-8 sm:p-10 ${style.wrap}`}
             >
-              {/* title and drawing share a row, so the drawing never sits on the text */}
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="font-display text-2xl font-bold tracking-tight text-balance sm:text-3xl">{audience.title}</h3>
-                <Illustration name={audience.illustration} className="-mr-2 -mt-3 size-24 shrink-0 rotate-6 sm:size-28" />
-              </div>
+              <h3 className="font-display text-2xl font-bold tracking-tight text-balance sm:text-3xl">{audience.title}</h3>
               <div className="mt-6">
                 <CheckList items={audience.points} tint={style.tint} />
               </div>

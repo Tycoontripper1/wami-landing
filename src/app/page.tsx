@@ -8,7 +8,6 @@ import { Features } from "@/components/sections/Features";
 import { Hero } from "@/components/sections/Hero";
 import { Moodboard } from "@/components/sections/Moodboard";
 import { PhoneStory } from "@/components/sections/PhoneStory";
-import { Ticker } from "@/components/sections/Ticker";
 
 export default function Home() {
   return (
@@ -22,7 +21,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Ticker />
         <Moodboard />
         <Features />
         <PhoneStory />

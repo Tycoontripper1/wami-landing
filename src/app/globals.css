@@ -73,6 +73,12 @@
   --dusk-leaf: #1d5c45;
   --dusk-leaf-light: #3b8f64;
 
+  /* The app's soft map: pale land, light water, green parks. */
+  --map-land: #f3f1ec;
+  --map-water: #cde5f1;
+  --map-park: #dcebd0;
+  --map-road: #ffffff;
+
   /* Google Play mark — fixed third-party brand colours. */
   --play-blue: #4285f4;
   --play-green: #00ad4b;
@@ -128,6 +134,10 @@
   --color-dusk-brown: var(--dusk-brown);
   --color-dusk-leaf: var(--dusk-leaf);
   --color-dusk-leaf-light: var(--dusk-leaf-light);
+  --color-map-land: var(--map-land);
+  --color-map-water: var(--map-water);
+  --color-map-park: var(--map-park);
+  --color-map-road: var(--map-road);
   --color-play-blue: var(--play-blue);
   --color-play-green: var(--play-green);
   --color-play-yellow: var(--play-yellow);
